@@ -144,3 +144,5 @@ df_new$field[df_new$field=="JNS"] <- "J"
 df_new$field[df_new$field=="ODB"] <- "OD"
 df_new$field[df_new$field=="WLF"] <- "W"
 
+# export cleaned data as csv
+readr::write_csv(df_new, "soil_properties/soil_properties_cleaned.csv", na="")
