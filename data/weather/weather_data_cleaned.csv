@@ -1,4 +1,4 @@
-date,farm,precip-cm,tair-C,rh-pct,wind_sp-m_per_s,irradiance-w_per_m^2
+date,field,precip-cm,tair-C,rh-pct,wind_sp-m_per_s,irradiance-w_per_m^2
 2011-01-01,AES,0,-9.375,80.20833333,3.625,78.16666667
 2011-01-02,AES,0,-6.966666667,79.20833333,2.929166667,53.625
 2011-01-03,AES,0,-9.095833333,84.5,1.570833333,76.125
