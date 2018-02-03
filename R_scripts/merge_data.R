@@ -17,14 +17,14 @@ ndre_data_sub[high_error_idx, c('average_adjacent', 'stdev_adjacent')] <- NA
 ndre_data_sub <- na.omit(ndre_data_sub)
 
 
-write_csv(x = ndre_data_sub, path = './HydroSatML/data/ndre_local_data/localized_ndre_data_subset.csv')
+# write_csv(x = ndre_data_sub, path = './HydroSatML/data/ndre_local_data/localized_ndre_data_subset.csv')
 
-range(ndre_data$date)
+# range(ndre_data$date)
 
 soilM <- data.frame(read_csv(file = './HydroSatML/data/soil_moisture/output_data/soil_moisture.csv'))
-soilM <- transform(soilM, Date = as.Date(as.character(Date), format = '%Y-%m-%d'),
-                   Field = factor(Field),
-                   Sensor_Full_Name = factor(Sensor_Full_Name))
+soilM <- transform(soilM, date = as.Date(as.character(date), format = '%Y-%m-%d'),
+                   field = factor(field),
+                   sensor_full_name = factor(sensor_full_name))
 soilM$year <- year(soilM$Date)
 
 summary_tbl <- soilM %>%
