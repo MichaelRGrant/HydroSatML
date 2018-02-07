@@ -15,7 +15,7 @@ soilM <- transform(soilM, date = as.Date(as.character(date), format = '%m/%d/%y'
                    sensor_full_name = factor(sensor_full_name))
 soilM[,5:7] <- apply(soilM[,5:7], 2, function(x) ifelse(x=='NaN', NA, x))
 soilM$avg_soilM <- rowMeans(soilM[,5:7], na.rm = T)
-soilM <- soilM[,-c(3, 5:9)] 
+soilM <- soilM[,-c(3,5:9)] 
 soilM_spread <- spread(soilM, key='sensor', value='avg_soilM')
 
 soilM_spread[,c(3:14)] <- apply(soilM_spread[,c(3:14)], 2, function(x) ifelse(x=='NaN', NA, x))
@@ -42,8 +42,26 @@ for(i in 3:length(J)){
 }
 for(i in 3:length(OD)){
     print(i)
-    plotNA.distribution(OD[,i], main = paste0('OD',i))
+    plotNA.distribution(OD[,i], main = paste0('OD',i-2))
 }
+
+AES$imputed <- na.interpolation(AES$soilM_avg, option = 'spline')
+OD$imputed <- na.interpolation(OD$soilM_avg, option='spline')
+
+## split W
+W1 <- W[1:1025, ]
+W2 <- W[1173:nrow(W), ]
+
+W1$imputed <- na.interpolation(W1$soilM_avg, option='spline')
+W2$imputed <- na.interpolation(W2$soilM_avg, option='spline')
+
+W1$field <- 'W'
+W2$field <- 'W'
+W1$field_ex <- 1
+W2$field_ex <- 2
+J$imputed <- na.interpolation(J$soilM_avg, option='spline')
+
+soilM_imputed <- rbind.fill(AES, OD, J, W1, W2)
 
 # soilM$year <- year(soilM$date)
 
@@ -111,8 +129,12 @@ soil_prop <- merge(soil_prop, clay, by='field')
 # soil_prop_ssc_long <- soil_prop_ssc_long[,-1]
 
 
-first_join <- left_join(soilM_spread, weather,  by=c('field', 'date'))
+first_join <- left_join(soilM_imputed, weather,  by=c('field', 'date'))
 second_join <- left_join(first_join, soil_prop,  by=c('field'))
+
+second_join$field <- paste0(second_join$field, second_join$field_ex)
+second_join$field <- gsub(second_join$field, pattern = 'NA', replacement = '')
+second_join <- second_join[,-5]
 
 time_series_data <- second_join
 time_series_data$avg_soilM <- rowMeans(x = time_series_data[,5:7], na.rm = TRUE)
