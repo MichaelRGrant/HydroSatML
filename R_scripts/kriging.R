@@ -1,5 +1,3 @@
-# https://rpubs.com/nabilabd/118172
-
 setwd("~/Desktop/HydroSatML/")
 
 library(raster)
@@ -25,7 +23,7 @@ points(monitor_vals, pch=3, col='blue')
 
 # calculate differences between monitors and SMR at location of monitors
 diffs <- smr_vals - monitor_vals
-
+plot(diffs)
 
 
 
@@ -34,6 +32,8 @@ diffs <- smr_vals - monitor_vals
 # perform kriging on these values at the locations of the monitors
 # kriging::kriging(x=coords_field[,1], y=coords_field[,2], diffs, model = "gaussian")
 
+
+# modified from https://rpubs.com/nabilabd/118172
 # first, convert to spatial dataframe (SPDF)
 diffs_df <- data.frame(coords_field[1], coords_field[2], diffs=diffs)
 coordinates(diffs_df) <- ~ east + north
@@ -55,6 +55,8 @@ gstat::krige(z~1, coords_field[,1:2])
 
 
 ### SAMPLE ###
+### from http://rspatial.org/analysis/rst/4-interpolation.html
+
 x <- read.csv("data/SMR/temp/airqual.csv")
 x$OZDLYAV <- x$OZDLYAV * 1000
 
