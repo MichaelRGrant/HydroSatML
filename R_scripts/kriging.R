@@ -1,16 +1,41 @@
 setwd("~/Desktop/HydroSatML/")
 
 library(raster)
-# library(kriging)
 library(gstat)
 coords <- read.csv("data/sensor_coords/SCF_TierII_site_coords.csv")
-smr <- raster("data/SMR/Aes/deep.mc_1002012.asc")
+smr <- raster("data/SMR/Aes/rz.mc_1592013.asc")
 
 coords_field <- coords[1:12, 1:2]
 
-plot(smr, main="AES")
+# plot SMR output
+plot(smr, main="SMR output - AES", zlim=c(.17,.25))
 points(coords_field)
 text(x=coords_field[,1], y=coords_field[,2], 1:12, cex=.75, pos=4)
+
+# plot adjusted SMR after accounting for differences from monitored data
+diff_raster <- raster("~/Desktop/HydroSatML/jupyter_notebooks/output.asc")/100
+diff_raster <- raster("~/Desktop/HydroSatML/jupyter_notebooks/dog.txt")/100
+plot(diff_raster)
+adjusted_smr <- smr+diff_raster
+
+plot(adjusted_smr, main="SMR output adjusted for diffs", zlim=c(.17,.25))
+points(coords_field)
+text(x=coords_field[,1], y=coords_field[,2], 1:12, cex=.75, pos=4)
+
+# plot diff raster
+plot(diff_raster, main="diffs")
+points(coords_field)
+text(x=coords_field[,1], y=coords_field[,2], 1:12, cex=.75, pos=4)
+
+plot(adjusted_smr, main="SMR output adjusted for diffs")
+points(coords_field)
+text(x=coords_field[,1], y=coords_field[,2],
+     1:12,
+     cex=.75, pos=4)
+
+(df <- data.frame("measured_vals"=c(0.233400, 0.168745,0.255447,0.275018,0.173099,0.151764,0.180831,NaN,NaN,0.197050,0.149060,0.167377),
+                  "raw_smr" = raster::extract(smr, coords_field),
+                  "adjusted_smr" = raster::extract(adjusted_smr, coords_field)))
 
 
 # import monitor values
