@@ -1,16 +1,26 @@
-setwd("~/Desktop/HydroSatML/")
+##### SETUP #####
 
 library(raster)
 library(gstat)
+
+setwd("~/Desktop/HydroSatML/")
+
+##### DATA IMPORT #####
+
+# field coordinates
 coords <- read.csv("data/sensor_coords/SCF_TierII_site_coords.csv")
+coords_aes <- coords[1:12, 1:2]
+# TODO: pull out coordinates for other fields; consider splitting out to list
+
+# sample SMR raster file
 smr <- raster("data/SMR/Aes/rz.mc_1592013.asc")
 
-coords_field <- coords[1:12, 1:2]
+
 
 # plot SMR output
 plot(smr, main="SMR output - AES", zlim=c(.17,.25))
-points(coords_field)
-text(x=coords_field[,1], y=coords_field[,2], 1:12, cex=.75, pos=4)
+points(coords_aes)
+text(x=coords_aes[,1], y=coords_aes[,2], 1:12, cex=.75, pos=4)
 
 # plot adjusted SMR after accounting for differences from monitored data
 diff_raster <- raster("~/Desktop/HydroSatML/jupyter_notebooks/output.asc")/100
@@ -19,28 +29,28 @@ plot(diff_raster)
 adjusted_smr <- smr+diff_raster
 
 plot(adjusted_smr, main="SMR output adjusted for diffs", zlim=c(.17,.25))
-points(coords_field)
-text(x=coords_field[,1], y=coords_field[,2], 1:12, cex=.75, pos=4)
+points(coords_aes)
+text(x=coords_aes[,1], y=coords_aes[,2], 1:12, cex=.75, pos=4)
 
 # plot diff raster
 plot(diff_raster, main="diffs")
-points(coords_field)
-text(x=coords_field[,1], y=coords_field[,2], 1:12, cex=.75, pos=4)
+points(coords_aes)
+text(x=coords_aes[,1], y=coords_aes[,2], 1:12, cex=.75, pos=4)
 
 plot(adjusted_smr, main="SMR output adjusted for diffs")
-points(coords_field)
-text(x=coords_field[,1], y=coords_field[,2],
+points(coords_aes)
+text(x=coords_aes[,1], y=coords_aes[,2],
      1:12,
      cex=.75, pos=4)
 
 (df <- data.frame("measured_vals"=c(0.233400, 0.168745,0.255447,0.275018,0.173099,0.151764,0.180831,NaN,NaN,0.197050,0.149060,0.167377),
-                  "raw_smr" = raster::extract(smr, coords_field),
-                  "adjusted_smr" = raster::extract(adjusted_smr, coords_field)))
+                  "raw_smr" = raster::extract(smr, coords_aes),
+                  "adjusted_smr" = raster::extract(adjusted_smr, coords_aes)))
 
 
 # import monitor values
 # make up fake ones for now
-smr_vals <- raster::extract(smr, coords_field)
+smr_vals <- raster::extract(smr, coords_aes)
 plot(smr_vals, ylim=c(.27, .33))
 set.seed(4)
 monitor_vals <- smr_vals + rnorm(12, sd=.005)
@@ -55,12 +65,12 @@ plot(diffs)
 
 
 # perform kriging on these values at the locations of the monitors
-# kriging::kriging(x=coords_field[,1], y=coords_field[,2], diffs, model = "gaussian")
+# kriging::kriging(x=coords_aes[,1], y=coords_aes[,2], diffs, model = "gaussian")
 
 
 # modified from https://rpubs.com/nabilabd/118172
 # first, convert to spatial dataframe (SPDF)
-diffs_df <- data.frame(coords_field[1], coords_field[2], diffs=diffs)
+diffs_df <- data.frame(coords_aes[1], coords_aes[2], diffs=diffs)
 coordinates(diffs_df) <- ~ east + north
 
 # variogram
@@ -68,7 +78,7 @@ lzn.vgm <- variogram(diffs~1, diffs_df) # calculates sample variogram values
 lzn.fit <- fit.variogram(lzn.vgm, model=vgm(1, "Sph", 900, 1)) # fit model
 
 
-gstat::krige(z~1, coords_field[,1:2])
+gstat::krige(z~1, coords_aes[,1:2])
 
 # adjust SMR based on this kriged surface
 # adjusted SMR will now pass through sensor values perfectly
