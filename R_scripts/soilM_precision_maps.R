@@ -55,7 +55,7 @@ g_legend <- function(a.gplot){
 legend <- g_legend(Jgg)
 
 Wgg <- ggplot() +
-    geom_raster(data=W_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.9, interpolate = T) +
+    geom_raster(data=W_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.95, interpolate = T) +
     scale_fill_viridis(direction = -1, begin = 0.05, end=0.85, limits=c(0.14,0.25)) +
     coord_fixed() +
     theme_map()+
@@ -68,38 +68,41 @@ Wgg <- ggplot() +
     ggtitle('Field W - 06/30/2014')
 
 AESgg <- ggplot() +
-    geom_raster(data=AES_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.9, interpolate = T) +
+    geom_raster(data=AES_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.95, interpolate = T) +
     scale_fill_viridis(direction = -1, begin = 0.05, end=0.85, limits=c(0.14,0.25)) +
     coord_equal()+
     theme_map()+
     theme(legend.position="bottom",
           legend.key.width=unit(2, "cm"),
           title = element_text(size = 25),
-          plot.title = element_text(hjust=0.5)) +
+          plot.title = element_text(hjust=0.5),
+          legend.text = element_text(size=20)) +
     labs(fill='Soil Moisture') +
     ggtitle('Field AES - 06/07/2012')
-    
+AESgg
 ODgg <- ggplot() +
-    geom_raster(data=OD_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.9, interpolate = T) +
+    geom_raster(data=OD_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.95, interpolate = T) +
     scale_fill_viridis(direction = -1, begin = 0.05, end=0.85, limits=c(0.14,0.25)) +    
     coord_equal() +
     theme_map()+
     theme(legend.position="bottom",
           legend.key.width=unit(2, "cm"),
           title = element_text(size = 25),
-          plot.title = element_text(hjust=0.5)) +
+          plot.title = element_text(hjust=0.5),
+          legend.text = element_text(size=20)) +
     labs(fill='Soil Moisture') +
     ggtitle('Field OD - 05/25/2012')
 
 Jgg <- ggplot() +
-    geom_raster(data=J_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.9, interpolate = T) +
+    geom_raster(data=J_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.95, interpolate = T) +
     scale_fill_viridis(direction = -1, begin = 0.05, end=0.85, limits=c(0.14,0.25)) +
     coord_equal() +
     theme_map()+
     theme(legend.position="bottom",
           legend.key.width=unit(2, "cm"), 
           title = element_text(size = 25),
-          plot.title = element_text(hjust=0.5))+
+          plot.title = element_text(hjust=0.5),
+          legend.text = element_text(size=20))+
     labs(fill='Soil Moisture') +
     ggtitle("Field J - 06/29/2013")
 
