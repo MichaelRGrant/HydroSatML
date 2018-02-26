@@ -14,14 +14,18 @@ at scale.
 We developed machine learning models that use high-resolution multispectral satellite imagery from Planet Labs, Inc. 
 to predict soil moisture in the Palouse region of Washington and Idaho. Our goal was to create a tool that provides 
 farmers with useful insight into their fields’ soil moisture at a scale, frequency and resolution that would otherwise
-be prohibitively expensive to achieve with today’s technology.
+be prohibitively expensive to achieve with today’s technology.  In addition and as an extension to this project, 
+we have developed a time-series model for pre-plant soil moisture prediction.
 
 <reference to Project Proposal>
 
+
 ### Background:
 
-Our project was sponsored by the Soil Sciences Departments at Washington State University and the University of Idaho.  
-We obtained all relevant data from the sponsor:
+Our project was sponsored by the Crop and Soil Sciences Department at Washington State University and the Department of 
+Soil and Water Systems at University of Idaho.
+
+We obtained all relevant data from the sponsor as listed below:
 
 ### Data:
 
@@ -34,20 +38,6 @@ Response:
  - Soil Moisture collected from sensors (from sensors)
 
 
-
-
-### Objective:
-
-Our goal was to produce a machine learning model that uses high-resolution multispectral satellite imagery to 
-predict soil moisture at a sub-field level. The model was trained using in-situ soil moisture data and multispectral
-satellite images. It  predicts soil moisture for different times/locations using additional multispectral satellite 
-images.
-
-In addition and as an extension to this project, we have developed a time-series model for pre-plant soil moisture 
-prediction.
-
----
-
 ### Directory Structure
 ```
 HydroSatML/
@@ -55,12 +45,33 @@ HydroSatML/
   |- journal_articles/
   |- jupyter_notebooks/
   |- R_scripts/
+       |- NDRE_exploration.R
+       |- SMR Extraction and Comparison.R
+       |- hydrosatML_result_plots.R
+       |- kriging.R
+       |- lagged_df_function.R
+       |- merge_data.R
+       |- merge_data_script.R
+       |- plot_all_NDRE.R
+       |- soilM_precision_maps.R
+       |- subset_ndre_byShape.R
+       |- time_series_data.R
   |- SMR/
   |- LICENSE     
   |- README.md
+  |- interpolation.pptx
+  |- latlongs.pptx
+
 ```
 
+### Acknowledgements
 
 
----
+A thanks to our sponsors:
 
+- Matt Yourek - PhD student, Department of Crop and Soil Sciences at Washington State University.  
+- Dr. David Brown - Professor, Washington State University, Soil Sciences Department
+- Dr. Erin Brooks - Professor, University of Idaho, Department of Soil and Water Systems  
+
+And our project advisor:
+- Dr. Megan Hazen - University of Washington, Data Science Capstone
