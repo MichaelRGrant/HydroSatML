@@ -123,6 +123,7 @@ predicted <- merge_sm$raw_smr
 
 # Calculate error
 error <- actual - predicted
+merge_sm$error <- abs(error)
 
 # Root Mean Squared Error
 rmse <-sqrt(mean(error^2, na.rm=TRUE))
@@ -132,3 +133,27 @@ mae <- mean(abs(error),na.rm=TRUE)
 
 rmse
 mae
+
+
+#Save final CSV of merged SM data
+
+write.csv(merge_sm, file = "C:/Users/Samir Patel/Desktop/Data 590 - Capstone I/Hydrologic Model/SMR 2-7-18/SMR/merge_sm.csv", row.names = FALSE)
+
+
+
+#Counting uniques
+nrow(unique(merge_sm[c('date', 'field')]))
+
+nrow(unique(actual.dates))
+
+nrow(subset(actual.dates, field == 'AES' | field == 'OD'))
+
+subset(actual.dates, field == 'AES' | field == 'OD')
+
+sm.unique <- subset(actual.dates, field == 'AES' | field == 'OD')
+sm.unique = sm.unique[order(sm.unique$DOY),]
+
+nrow(sm.unique)
+View(sm.unique)
+
+
