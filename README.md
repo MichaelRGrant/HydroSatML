@@ -2,7 +2,7 @@
 ## Capstone Project - UW Data Science Master's Program
 
 
-### Abstract:
+### Abstract
 
 Soil moisture is an important characteristic in agriculture as it has been shown to correlate strongly with
 plant health and crop yields. However, accurate soil moisture readings can only be obtained in-situ. Such measurements
@@ -20,14 +20,14 @@ we have developed a time-series model for pre-plant soil moisture prediction.
 <reference to Project Proposal>
 
 
-### Background:
+### Background
 
 Our project was sponsored by the Crop and Soil Sciences Department at Washington State University and the Department of 
 Soil and Water Systems at University of Idaho.
 
 We obtained all relevant data from the sponsor as listed below:
 
-### Data:
+### Data
 
 Features:
  - Spectral satellite image data obtained from Planet Labs
