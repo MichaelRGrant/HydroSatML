@@ -3,57 +3,36 @@ library(rasterVis)
 library(RColorBrewer)
 library(scales)
 library(viridis)
-library(ggthemes) # theme_map()
+library(ggthemes)
 library(gridExtra)
 library(grid)
 
+# load data for soil moisture map plotting
+data_for_predict <- read_csv(file = './HydroSatML/data/data_for_XGB-prediction.csv')
+predictions <- read_csv(file = './HydroSatML/data/predictions.csv')[, -1]
+names(predictions) <- 'soilM'
+data_for_predict$soilM <- as.vector(predictions$predictions)
+raster_soilM_plots <- data_for_predict[, c(1:3, 5, 14)]
+raster_soilM_plots <- transform(raster_soilM_plots, cutoff_soilM = ifelse(ndre_val < 0.45, NA, soilM))
 
-files <- list.files(path = './data/trimmed_ndre', full.names = T)
-W_ndre <- files[113]
-AES_ndre <- files[27]
-OD_ndre <- files[74]
-J_ndre <- files[44]
+# subset each field for seperate plotting
+W_r <- subset(raster_soilM_plots, field == 'W')
+J_r <- subset(raster_soilM_plots, field == 'J')
+OD_r <- subset(raster_soilM_plots, field == 'OD')
+AES_r <- subset(raster_soilM_plots, field == 'AES')
 
-plot(raster(AES_ndre))
-plot(raster(W_ndre))
-plot(raster(OD_ndre))
-plot(raster(J_ndre), main='J')
-
+# set the color palette to blues
 colr <- colorRampPalette(brewer.pal(9, 'Blues'))
 
+# create a raster file from each data frame
 W_rr <- rasterFromXYZ(W_r[,c(1,2,6)])
 AES_rr <- rasterFromXYZ(AES_r[,c(1,2,6)])
 OD_rr <- rasterFromXYZ(OD_r[,c(1,2,6)])
 J_rr <- rasterFromXYZ(J_r[,c(1,2,6)])
 raster_list <- c(W_rr, AES_rr, OD_rr, J_rr)
 field_name <- c('W', 'AES', 'OD', 'J')
-for(i in 1:4){
-    r<-levelplot(raster_list[[i]], 
-              margin=FALSE,                       # suppress marginal graphics
-              colorkey=list(
-                  space='bottom',                   # plot legend at bottom
-                  labels=list(at=seq(0.1,0.3,0.01), font=4)      # legend ticks and labels 
-              ),    
-              par.settings=list(
-                  axis.line=list(col='transparent') # suppress axes and legend outline
-              ),
-              scales=list(draw=FALSE),            # suppress axis labels
-              col.regions=colr,                   # colour ramp
-              at=seq(0.14, 0.25, len=101),
-              main=field_name[i])
-    plot(r)
-}
 
-#########
-
-g_legend <- function(a.gplot){
-    tmp <- ggplot_gtable(ggplot_build(a.gplot))
-    leg <- which(sapply(tmp$grobs, function(x) x$name) == "guide-box")
-    legend <- tmp$grobs[[leg]]
-    return(legend)}
-
-legend <- g_legend(Jgg)
-
+## Make the soil moisture maps from predicted soil moisture
 Wgg <- ggplot() +
     geom_raster(data=W_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.95, interpolate = T) +
     scale_fill_viridis(direction = -1, begin = 0.05, end=0.85, limits=c(0.14,0.25)) +
@@ -79,7 +58,7 @@ AESgg <- ggplot() +
           legend.text = element_text(size=20)) +
     labs(fill='Soil Moisture') +
     ggtitle('Field AES - 06/07/2012')
-AESgg
+
 ODgg <- ggplot() +
     geom_raster(data=OD_r, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.95, interpolate = T) +
     scale_fill_viridis(direction = -1, begin = 0.05, end=0.85, limits=c(0.14,0.25)) +    
@@ -107,26 +86,3 @@ Jgg <- ggplot() +
     ggtitle("Field J - 06/29/2013")
 
 ggarrange(Jgg, AESgg, Wgg, ODgg, ncol=2, nrow=2, common.legend = T, legend = 'bottom')
-
-
-# layout <- rbind(c(1, 2),
-#                 c(3, 4),
-#                 c(5, 5))
-# 
-# plot_grid(Jgg, AESgg, Wgg, ODgg, legend, layout_matrix = layout, rel_heights = c(3/7,3/7,1/7))
-###########
-
-
-
-###########
-
-ggplot() +
-    geom_tile(data=raster_soilM_plots, aes(x = x, y=y, fill=cutoff_soilM), alpha=0.8) +
-    scale_fill_viridis(direction = -1, begin = 0.05, end=0.85) +
-    coord_equal() +
-    theme_map()+
-    theme(legend.position="bottom",
-          legend.title.align = 0.5)+
-    labs(fill='Soil Moisture') +
-    theme(legend.key.width=unit(2, "cm")) +
-    facet_grid(. ~ field)
