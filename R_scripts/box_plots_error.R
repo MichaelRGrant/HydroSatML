@@ -32,12 +32,13 @@ boxplot <- ggplot(tidy_error, aes(x=model, y=MAE)) +
     geom_boxplot(aes(fill = model)) +
     xlab('') +
     ylab('Mean Absolute Error') +
-    ggtitle('Comparing Errors Between Model Results') +
+    ggtitle('Comparing Error Between Models') +
     labs(fill='Model') +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 20),
-          axis.text.y = element_text(size = 20),
-          axis.title.x = element_text(size = 25),
-          title = element_text(size = 25),
-          legend.title = element_text(size=15),
-          legend.text = element_text(size=15))
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 25),
+          axis.text.y = element_text(size = 25,
+                                     margin = margin(0,0,0,15)),
+          axis.title.x = element_text(size = 35,
+                                      margin = margin(0,0,0,10)),
+          title = element_text(size = 45),
+          legend.position = 'none')
 boxplot
