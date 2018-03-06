@@ -15,7 +15,11 @@ coords_aes <- coords[1:12, 1:2]
 # sample SMR raster file
 smr <- raster("data/SMR/Aes/rz.mc_1592013.asc")
 
-
+cnt <- 0
+for (i in list.files("data/trimmed_ndre/")[1:66]) {
+  cnt <- cnt + 1
+  plot(raster(paste0("data/trimmed_ndre/", i)), main=paste0(cnt, ": ", i))
+}
 
 # plot SMR output
 plot(smr, main="SMR output - AES", zlim=c(.17,.25))
