@@ -69,8 +69,8 @@ HydroSatML/
 
 A thanks to our sponsors:
 
-- Matt Yourek - PhD student, Department of Crop and Soil Sciences at Washington State University.  
-- Dr. David Brown - Professor, Washington State University, Soil Sciences Department
+- Matt Yourek - PhD student,  Washington State University, Department of Civil and Environmental Engineering
+- Dr. David Brown - Professor, Washington State University, Department of Crop and Soil Sciences
 - Dr. Erin Brooks - Professor, University of Idaho, Department of Soil and Water Systems  
 
 And our project advisor:
