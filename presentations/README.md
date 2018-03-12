@@ -1,1 +1,1 @@
-![Alt text](/presentations/images/figures/MSDS_Capstone_Poster_FINAL.png "Final Poster")
+![Alt text](/presentations/images/MSDS_Capstone_Poster_FINAL.png "Final Poster")
