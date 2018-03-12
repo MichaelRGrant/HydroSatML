@@ -1,5 +1,5 @@
 .DS_Store
-journal_articles/
+journal_articles/important/*
 journal_articles/**
 **journal_articles/
 Supplementals/*
