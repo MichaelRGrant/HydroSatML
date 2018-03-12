@@ -22,8 +22,8 @@ we have developed a time-series model for pre-plant soil moisture prediction.
 
 ### Background
 
-Our project was sponsored by the Crop and Soil Sciences Department at Washington State University and the Department of 
-Soil and Water Systems at University of Idaho.
+Our project was sponsored by the Washington State University's Department of Crop and Soil Sciences and the University 
+of Idaho's Department of Soil and Water Systems.
 
 We obtained all relevant data from the sponsor as listed below:
 
@@ -69,7 +69,7 @@ HydroSatML/
 
 A thanks to our sponsors:
 
-- Matt Yourek - PhD student,  Washington State University, Department of Civil and Environmental Engineering
+- Matt Yourek - PhD student, Washington State University, Department of Civil & Environmental Engineering
 - Dr. David Brown - Professor, Washington State University, Department of Crop and Soil Sciences
 - Dr. Erin Brooks - Professor, University of Idaho, Department of Soil and Water Systems  
 
