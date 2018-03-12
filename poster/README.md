@@ -1,1 +1,1 @@
-![Alt text](MSDS_Capstone_Poster_FINAL.pdf?raw=true "Final Poster")
+![Alt text](/figures/MSDS_Capstone_Poster_FINAL?raw=true.png "Final Poster")
