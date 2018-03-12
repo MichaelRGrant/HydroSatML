@@ -1,2 +1,2 @@
 /journal_articles/*
-/*/.ipynb_checkpoints/*
+/scripts/jupyter_notebooks/.ipynb_checkpoints/*
