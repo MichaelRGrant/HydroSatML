@@ -1,6 +1,2 @@
-.DS_Store
 journal_articles/important/*
-journal_articles/**
-**journal_articles/
-Supplementals/*
 scripts/jupyter_notebooks/.ipynb_checkpoints/
