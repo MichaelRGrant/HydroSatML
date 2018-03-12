@@ -1,3 +1,4 @@
 .DS_Store
 Supplementals/*
-jupyter_notebooks/.ipynb_checkpoints/
+scripts/jupyter_notebooks/.ipynb_checkpoints/
+journal_articles/*
