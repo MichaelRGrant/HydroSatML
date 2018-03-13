@@ -4,10 +4,10 @@ library(lubridate)
 library(raster)
 library(rasterVis)
 library(stringr)
-setwd("~/MS_Data_Science/Capstone")
+setwd("~/Desktop/HydroSatML/")
 
-# NDRE data input
-ndre_data <- data.frame(read_csv(file = './HydroSatML/data/ndre_local_data/exact_ndre_data.csv'))
+# NDRE data input and cleaning
+ndre_data <- data.frame(read_csv(file = './data/2_cleaned/ndre_local_data/exact_ndre_data.csv'))
 ndre_data <- transform(ndre_data, field = factor(field))
 names(ndre_data) <- tolower(names(ndre_data))
 ndre_data_sub <- subset(ndre_data, year(date) != 2009 & year(date) != 2010)
@@ -16,14 +16,14 @@ ndre_data_sub[high_error_idx, 'ndre_val'] <- NA
 ndre_data_sub <- na.omit(ndre_data_sub)
 
 # Soil moisture data input
-soilM <- data.frame(read_csv(file = './HydroSatML/data/soil_moisture/output_data/soil_moisture.csv'))
+soilM <- data.frame(read_csv(file = './data/2_cleaned/soil_moisture.csv'))
 soilM <- transform(soilM, date = as.Date(as.character(date), format = '%m/%d/%y'),
                    field = factor(field),
                    sensor_full_name = factor(sensor_full_name))
 soilM$year <- year(soilM$date)
 
 # soil physical properties input
-soil_prop <- read_csv('./HydroSatML/data/site_analysis/soil_properties/soil_properties_cleaned.csv')
+soil_prop <- read_csv('./data/2_cleaned/soil_properties_cleaned.csv')
 soil_prop <- transform(soil_prop, field = factor(field))
 soil_prop_ssc <- soil_prop[, c(1:18)]
 soil_prop_ssc <- soil_prop_ssc[, -c(7, 8, 12, 13, 17, 18)]

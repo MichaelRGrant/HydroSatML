@@ -67,14 +67,14 @@ extractSoilProperties <- function(path, sheet, range, sand, silt, clay) {
 
 library(readxl)
 library(tidyr)
-setwd("~/Desktop/HydroSatML/data/site_analysis/")
+setwd("~/Desktop/HydroSatML/data/1_raw/site_analysis/")
 
 #############
 #### AES ####
 #############
 
 # set properties for data import
-path <- "raw/Aes_site_analysis_FINAL.xlsx"
+path <- "Aes_site_analysis_FINAL.xlsx"
 sheet <- "SOIL PROPERTIES"
 range <- "I5:R65"
 sand <- "Sand (%)"
@@ -89,7 +89,7 @@ aes <- extractSoilProperties(path=path, sheet=sheet, range=range, sand=sand, sil
 ###########
 
 # set properties for data import
-path <- "raw/J_site_analysis_FINAL.xlsx"
+path <- "J_site_analysis_FINAL.xlsx"
 sheet <- "SOIL_PROPERTIES"
 range <- "A5:O65"
 sand <- "sand"
@@ -105,7 +105,7 @@ j <- extractSoilProperties(path=path, sheet=sheet, range=range, sand=sand, silt=
 ############
 
 # set properties for data import
-path <- "raw/Od_site_analysis_FINAL.xlsx"
+path <- "Od_site_analysis_FINAL.xlsx"
 sheet <- "SOIL_PROPERTIES"
 range <- "E4:V64"
 sand <- "sand"
@@ -121,7 +121,7 @@ od <- extractSoilProperties(path=path, sheet=sheet, range=range, sand=sand, silt
 ############
 
 # set properties for data import
-path <- "raw/W_site_analysis_FINAL.xlsx"
+path <- "W_site_analysis_FINAL.xlsx"
 sheet <- "SOIL PROPERTIES"
 range <- "G4:U64"
 sand <- "sand"
@@ -145,4 +145,4 @@ df_new$field[df_new$field=="ODB"] <- "OD"
 df_new$field[df_new$field=="WLF"] <- "W"
 
 # export cleaned data as csv
-readr::write_csv(df_new, "soil_properties/soil_properties_cleaned.csv", na="")
+readr::write_csv(df_new, "../../2_cleaned/soil_properties_cleaned.csv", na="")
