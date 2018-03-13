@@ -1,5 +1,5 @@
 /journal_articles/*
-/scripts/jupyter_notebooks/.ipynb_checkpoints/*
+.ipynb_checkpoints
 .Rhistory
 
 # Ignore Mac DS_Store files
