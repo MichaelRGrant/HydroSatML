@@ -1,3 +1,5 @@
+# Function for extracting dates from raw NDRE data files into usable format
+
 extract_date <- function(raw_date){
     require(stringi)
     require(stringr)
