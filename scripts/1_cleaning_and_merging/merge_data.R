@@ -4,24 +4,20 @@ library(lubridate)
 library(raster)
 library(rasterVis)
 library(stringr)
-setwd("~/MS_Data_Science/Capstone")
+setwd("~/Desktop/HydroSatML/")
 
-
-
-ndre_data <- data.frame(read_csv(file = './HydroSatML/data/ndre_local_data/localized_ndre_data.csv'))
-ndre_data <- transform(ndre_data, Field = factor(Field))
+# NDRE data input and cleaning
+ndre_data <- data.frame(read_csv(file = './data/2_cleaned/ndre_local_data/exact_ndre_data.csv'))
+ndre_data <- transform(ndre_data, field = factor(field))
 names(ndre_data) <- tolower(names(ndre_data))
 ndre_data_sub <- subset(ndre_data, year(date) != 2009 & year(date) != 2010)
 high_error_idx <- which(ndre_data_sub$average_adjacent > 1.0)
 ndre_data_sub[high_error_idx, c('average_adjacent', 'stdev_adjacent')] <- NA
 ndre_data_sub <- na.omit(ndre_data_sub)
+# write_csv(x = ndre_data_sub, path = './data/2_cleaned/ndre_local_data/localized_ndre_data_subset.csv')
 
-
-# write_csv(x = ndre_data_sub, path = './HydroSatML/data/ndre_local_data/localized_ndre_data_subset.csv')
-
-# range(ndre_data$date)
-
-soilM <- data.frame(read_csv(file = './HydroSatML/data/soil_moisture/output_data/soil_moisture.csv'))
+# Soil moisture data input
+soilM <- data.frame(read_csv(file = './data/2_cleaned/soil_moisture.csv'))
 soilM <- transform(soilM, date = as.Date(as.character(date), format = '%Y-%m-%d'),
                    field = factor(field),
                    sensor_full_name = factor(sensor_full_name))
@@ -32,14 +28,14 @@ soilM$year <- year(soilM$date)
 #     summarise('Rows' = n(),
 #               'DateRange' = list(range(as.Date(date, origin='1970-01-01'))))
 
-# crop_cleaned <- read_csv(file = './HydroSatML/data/crop/crop_data_cleaned.csv')
-# weather_cleaned <- read_csv(file = './HydroSatML/data/weather/weather_data_cleaned.csv')
+# crop_cleaned <- read_csv(file = './data/2_cleaned/crop_data_cleaned.csv')
+# weather_cleaned <- read_csv(file = './data/2_cleaned/weather_data_cleaned.csv')
+
+# field coordinates
+coords <- read.csv('./data/1_raw/coordinates/SCF_TierII_site_coords.csv')
 
 
-# coords <- read.csv('./HydroSatML/data/soil_moisture/SCF_TierII_site_coords.csv')
-
-
-# files <- list.files('./HydroSatML/data/trimmed_ndre/', full.names = T)
+# files <- list.files('./data/1_raw/trimmed_ndre/', full.names = T)
 # plot(raster(files[1]))
 # #plot rasters
 # for(i in 1:length(files)){
@@ -73,7 +69,8 @@ soilM$year <- year(soilM$date)
 #     # dev.off()
 # }
 
-soil_prop <- read_csv('./HydroSatML/data/site_analysis/soil_properties/soil_properties_cleaned.csv')
+# soil physical properties input and cleaning
+soil_prop <- read_csv('./data/2_cleaned/soil_properties_cleaned.csv')
 soil_prop <- transform(soil_prop, field = factor(field))
 soil_prop_ssc <- soil_prop[,c(1:18)]
 soil_prop_ssc <- soil_prop_ssc[,-c(7,8,12,13,17,18)]
@@ -88,7 +85,7 @@ soil_prop_ssc_long <- soil_prop_ssc_long[,-1]
 # # soil moisture
 # ####
 # 
-# soilM <- read.csv('./HydroSatML/data/soil_moisture/output_data/soil_moisture.csv')
+# soilM <- read.csv('./data/2_cleaned/soil_moisture.csv')
 # soilM <- transform(soilM, date = as.Date(as.character(date), format = '%Y-%m-%d'))
 # soilM$sensor_full_name <- gsub(pattern = " ", replacement = "", x = soilM$sensor_full_name)
 # 
@@ -144,14 +141,14 @@ lagged_soilM_df <- function(soilMdata, merge_df, lag=c(3,5,7)){
 # weather
 ####
 
-weather <- read_csv('./HydroSatML/data/weather/weather_data_cleaned.csv')
+weather <- read_csv('./data/2_cleaned/weather_data_cleaned.csv')
 names(weather)[2] <- 'field'
 weather <- transform(weather, date = as.Date(as.character(date), format = '%Y-%m-%d'),
                      field = factor(field))
 ####
 # crop stuff
 ####
-crop <- read_csv('./HydroSatML/data/crop/crop_data_cleaned.csv')
+crop <- read_csv('./data/2_cleaned/crop_data_cleaned.csv')
 crop <- crop[,-7]
 names(crop)[2] <- 'field'
 crop <- transform(crop, field = factor(field))
@@ -221,8 +218,8 @@ joined_data_no_bare_soil <- subset(joined_data_sub, average_adjacent >= 0.40)
 
 # find duplicates
 
-# write_csv(x = joined_data_sub, path = './HydroSatML/data/final_join_subbed_missing_soilM_with_lag.csv')
-write_csv(x = joined_data_no_bare_soil, path = './HydroSatML/data/final_join_subbed_bare_soil_with_lag_40_2.csv')
+# write_csv(x = joined_data_sub, path = './data/3_merged_data_for_models/final_join_subbed_missing_soilM_with_lag.csv')
+write_csv(x = joined_data_no_bare_soil, path = './data/3_merged_data_for_models/final_join_subbed_bare_soil_with_lag_40_2.csv')
 
 
 

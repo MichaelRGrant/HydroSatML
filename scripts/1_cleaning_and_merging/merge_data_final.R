@@ -22,7 +22,7 @@ soilM <- transform(soilM, date = as.Date(as.character(date), format = '%m/%d/%y'
                    sensor_full_name = factor(sensor_full_name))
 soilM$year <- year(soilM$date)
 
-# soil physical properties input
+# soil physical properties input and cleaning
 soil_prop <- read_csv('./data/2_cleaned/soil_properties_cleaned.csv')
 soil_prop <- transform(soil_prop, field = factor(field))
 soil_prop_ssc <- soil_prop[, c(1:18)]
@@ -34,6 +34,11 @@ soil_prop_ssc_long$year <- c(rep(2011, 48), rep(2012, 48), rep(2013, 48), rep(20
                              rep(2015, 48), rep(2016, 48))
 soil_prop_ssc_long <- soil_prop_ssc_long[, -1]
 
+# weather data input and cleaning
+weather <- read_csv('./data/2_cleaned/weather_data_cleaned.csv')
+names(weather)[2] <- 'field'
+weather <- transform(weather, date = as.Date(as.character(date), format = '%Y-%m-%d'),
+                     field = factor(field))
 
 #### merging
 ndre_soilM_join <- left_join(ndre_data_sub, soilM, by=c('field', 'sensor', 'date'))
@@ -42,6 +47,9 @@ ndre_soilM_weather_join$year <- year(ndre_soilM_weather_join$date)
 
 ndre_soilM_weather_ssc_join <- left_join(ndre_soilM_weather_join, soil_prop_ssc_long, 
                                          by=c('field', 'year', 'sensor'))
+
+# temp line to set subset to full dataset
+joined_data_sub <- ndre_soilM_weather_ssc_join
 
 joined_data_no_bare_soil <- subset(joined_data_sub, ndre_val >= 0.40)
 write_csv(x = joined_data_no_bare_soil, path = './HydroSatML/data/final_join_subbed_bare_soil_with_lag_40_EXACT_NDRE.csv')
