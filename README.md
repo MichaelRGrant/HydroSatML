@@ -16,7 +16,7 @@ Our original project proposal can be found here:
 [Project Proposal](presentations/HydroSatML_Proposal.pdf)
 
 Our Capstone Poster Presentation can be found here:  
-[Capstone Poster Presentation](presentations/MSDS_Capstone_Poster_FINAL.pdf)
+[Capstone Poster Presentation](presentations/images/MSDS_Capstone_Poster_FINAL.png)
 
 ## Data
 
