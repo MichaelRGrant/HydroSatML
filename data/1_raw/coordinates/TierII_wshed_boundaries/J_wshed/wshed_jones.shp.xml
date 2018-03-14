@@ -1,3 +1,0 @@
-<?xml version="1.0"?>
-<!--<!DOCTYPE metadata SYSTEM "http://www.esri.com/metadata/esriprof80.dtd">-->
-<metadata xml:lang="en"><Esri><MetaID>{7B60D2CA-E19A-495A-87B6-F4367A96E09C}</MetaID><CreaDate>20111214</CreaDate><CreaTime>00020800</CreaTime><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process Name="RasterToPolygon_50" ToolSource="C:\Program Files\ArcGIS\ArcToolbox\Toolboxes\Conversion Tools.tbx\RasterToPolygon" Date="20111214" Time="000208">RasterToPolygon jones_wshed2 "C:\Documents and Settings\Brooks\My Documents\Dave_brown_proposal\josh_jones_site\gisdata\wshed_jones.shp" SIMPLIFY VALUE</Process></lineage></DataProperties></Esri></metadata>
