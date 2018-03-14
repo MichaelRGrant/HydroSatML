@@ -73,11 +73,11 @@ model to yield two-week soil moisture forecasts. The CNN model yielded a MAE of 
 
 ### Physical Model and Interpolation
 
-A physical (hydrological) model could be utilized to estimate soil moisture beyond the 12 sensor locations. While less precise, a kriging or splining method could be used to spatially interpolate soil moisture across the  elds where no vegetation or soil moisture readings are present.
+A physical (hydrological) model could be utilized to estimate soil moisture beyond the 12 sensor locations. While less precise, a kriging or splining method could be used to spatially interpolate soil moisture across the fields where no vegetation or soil moisture readings are present.
 
 ### Beyond the Palouse
 
-It is unclear how our models would perform for  elds beyond the Palouse. To develop a more robust model, future work would bene t from new training data encompassing a wider range of physical characteristics.
+It is unclear how our models would perform for fields beyond the Palouse. To develop a more robust model, future work would benefit from new training data encompassing a wider range of physical characteristics.
 
 ## Acknowledgements
 
@@ -92,7 +92,6 @@ A thanks to our sponsors:
 And our project advisor:
 - **Dr. Megan Hazen** - University of Washington, Data Science Capstone
 
+## License
 
-
-
-
+The code in this repository is released under the MIT license.
