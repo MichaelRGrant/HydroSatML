@@ -1,10 +1,6 @@
 # HydroSatML
-**Capstone Project - UW Data Science Masters Program**
-
-Dane Jordan  
-Samir Patel  
-Rex Thompson  
-Michael Grant  
+**Capstone Project - UW Data Science Masters Program**  
+*Dane Jordan; Samir Patel; Rex Thompson; Michael Grant*
 
 ## Overview
 
@@ -18,80 +14,9 @@ Our original project proposal can be found here:
 Our Capstone Poster Presentation can be found here:  
 [Capstone Poster Presentation](presentations/images/MSDS_Capstone_Poster_FINAL.png)
 
-## Data
-
-We gathered data from four  elds in Eastern Washington and Western Idaho during the 2012-2014 growing seasons.
-
-### In-Situ Measurements
-
-Words...
-
-### Multispectral Satellite Imagery
-
-
-
-
-
-Features:
- - Spectral satellite image data obtained from Planet Labs
- - Weather data - temperature, humidity, wind, etc.
- - Soil Properties - percentages of clay, silt, sand
- 
-Response:
- - Soil Moisture collected from sensors
-
-
-
-## Methods (Activities....)
-
-### Data Cleaning
-
-Words...
-
-### Satellite-based Modeling
-
-Words...
-
-### Bare Soil Predictions
-
-Words...
-
-## Results
-
-TODO
-
-## Challenges & Limitations
-
-Words...
-
-### Accuracy vs. Scalability
-
-Words...
-
-### Data Availability
-
-Words...
-
-## Future Work
-
-TODO
-
-## Acknowledgements
-
-Our project was sponsored by the Washington State University's Department of Crop and Soil Sciences and the University of Idaho's Department of Soil and Water Systems.
-
-A thanks to our sponsors:
-
-- Matt Yourek - PhD student, Washington State University, Department of Civil & Environmental Engineering
-- Dr. David Brown - Professor, Washington State University, Department of Crop and Soil Sciences
-- Dr. Erin Brooks - Professor, University of Idaho, Department of Soil and Water Systems  
-
-And our project advisor:
-- Dr. Megan Hazen - University of Washington, Data Science Capstone
-
 ## Project Structure
 
-Refer to the following files for specifics about the data and scripts...
+### Overview
 
 TODO: Update directory structure below...
 
@@ -116,6 +41,54 @@ HydroSatML/
   |- LICENSE     
   |- README.md
 ```
+
+### Code
+
+#### Data Cleaning and Merging
+
+Words...
+Link to cleaning and merging code...
+
+#### Modeling
+
+#### Utilities
+
+### Data
+
+We gathered data from four fields in Eastern Washington and Western Idaho during the 2012-2014 growing seasons:
+
+Features:
+ * Multispectral satellite imagery obtained from Planet Labs
+ * Weather data - temperature, humidity, wind, etc.
+ * Soil Properties - percentages of clay, silt, sand
+ 
+Response:
+ * Soil Moisture collected from sensors
+
+
+
+
+## Results / Conclusions
+
+TODO
+
+## Future Work
+
+TODO
+
+## Acknowledgements
+
+Our project was sponsored by the Washington State University's Department of Crop and Soil Sciences and the University of Idaho's Department of Soil and Water Systems.
+
+A thanks to our sponsors:
+
+- Matt Yourek - PhD student, Washington State University, Department of Civil & Environmental Engineering
+- Dr. David Brown - Professor, Washington State University, Department of Crop and Soil Sciences
+- Dr. Erin Brooks - Professor, University of Idaho, Department of Soil and Water Systems  
+
+And our project advisor:
+- Dr. Megan Hazen - University of Washington, Data Science Capstone
+
 
 
 
