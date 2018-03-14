@@ -1,6 +1,6 @@
 # HydroSatML
 **Capstone Project - UW Data Science Masters Program**  
-*Dane Jordan; Samir Patel; Rex Thompson; Michael Grant*
+*Dane Jordan, Samir Patel, Rex Thompson, Michael Grant*
 
 ## Overview
 
@@ -39,30 +39,23 @@ HydroSatML/
 
 We gathered data from four fields in Eastern Washington and Western Idaho during the 2012-2014 growing seasons:
 
-Features:
+**Features:**
  * Multispectral satellite imagery obtained from Planet Labs
  * Weather data - temperature, humidity, wind, etc.
  * Soil Properties - percentages of clay, silt, sand
- 
-Response:
+
+**Response:**
  * Soil Moisture collected from sensors
 
 Unfortunately our data is not publicly available, and therefore it is not included within this repository.
 
 ### Code
 
-TODO: Beef up these sections
+The code is organized in the following main directories:
 
-#### Data Cleaning and Merging
-
-Words...
-Link to cleaning and merging code...
-
-#### Utilities
-
-#### Modeling
-
-
+* **Data Cleaning and Merging:** Tools to clean and merge the raw data
+* **Utilities:** Various utilities used throughout this project
+* **Modeling:** Machine learning models for estimating soil moisture
 
 ## Results / Conclusions
 
