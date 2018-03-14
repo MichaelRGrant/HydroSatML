@@ -1,9 +1,13 @@
+# NDRE Spatial Plots for Capstone Poster
+
+# Import Libraries
 library(raster)
 library(rgdal)
 
+# Set Working Directory
 setwd("~/Desktop/HydroSatML")
 
-#### DATA IMPORT
+#### Data Import
 
 # OD satellite swath raster
 od <- raster("~/Downloads/Od_ndre.630.2016.asc")
@@ -28,8 +32,8 @@ od[cellFromRowColCombine(od, 300:348, 170:284)] <- NA
 od[cellFromRowColCombine(od, 250:348, 200:284)] <- NA
 od[cellFromRowColCombine(od, 200:348, 240:284)] <- NA
 
-plot(od, colNA="gray50")
-plot(shape, lwd=4, border = "red", add=TRUE)
+plot(od, colNA = "gray50")
+plot(shape, lwd = 4, border = "red", add = TRUE)
 
 #### SUBSET PLOT
 
@@ -37,4 +41,4 @@ plot(shape, lwd=4, border = "red", add=TRUE)
 masked <- mask(od, shape)
 # plot(masked)
 trimmed <- trim(masked)
-plot(trimmed, colNA="gray50")
+plot(trimmed, colNA = "gray50")
