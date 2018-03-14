@@ -8,11 +8,9 @@ Soil moisture is an important characteristic in agriculture as it has been shown
 
 Our objective was to determine whether machine learning models can be used to accurately estimate soil moisture with high-resolution multispectral satellite imagery, physical characteristics and environmental factors.
 
-Our original project proposal can be found here:  
-[Project Proposal](presentations/HydroSatML_Proposal.pdf)
+The project and results are summarized in the poster below.
 
-Our Capstone Poster Presentation can be found here:  
-[Capstone Poster Presentation](presentations/images/MSDS_Capstone_Poster_FINAL.png)
+![Alt text](/presentations/images/MSDS_Capstone_Poster_FINAL.png "Final Poster")
 
 ## Project Structure
 
@@ -62,7 +60,6 @@ The code is organized in the following main directories:
 ### Satellite-based Modeling
 
 We used an XGBoost model which yielded a Mean Absolute Error (MAE) of 0.027; this is an improvement over the results obtained from the physical Soil Moisture Routing (SMR) model, which yielded a MAE of 0.035.
-
 
 ### Bare Soil Predictions
 To estimate soil moisture in the absence of vegetation, we trained a convolutional neural
