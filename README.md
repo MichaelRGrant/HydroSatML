@@ -20,15 +20,17 @@ Our Capstone Poster Presentation can be found here:
 
 ```
 HydroSatML/
-	|- data/
-	|- presentations/
-		|- images
 	|- code/
 		|- 1_cleaning_and_merging
 		|- 2_utilities
 		|- 3_modeling
 		|- 4_supplementals
-	|- .gitignore
+	|- data/
+		|- best_params
+		|- figures
+		|- models
+	|- presentations/
+		|- images
 	|- LICENSE
 	|- README.md
 ```
