@@ -54,12 +54,20 @@ Unfortunately our data is not publicly available, and therefore it is not includ
 The code is organized in the following main directories:
 
 * **Data Cleaning and Merging:** Tools to clean and merge the raw data
-* **Utilities:** Various utilities used throughout this project
 * **Modeling:** Machine learning models for estimating soil moisture
+* **Utilities:** Various utilities used throughout this project
 
-## Results / Conclusions
+## Results
 
-TODO: beef up this section...
+### Satellite-based Modeling
+
+We used an XGBoost model which yielded a Mean Absolute Error (MAE) of 0.027; this is an improvement over the results obtained from the physical Soil Moisture Routing (SMR) model, which yielded a MAE of 0.035.
+
+
+### Bare Soil Predictions
+To estimate soil moisture in the absence of vegetation, we trained a convolutional neural
+network (CNN) using the physical characteristics of the soil and weather data. We extended this
+model to yield two-week soil moisture forecasts. The CNN model yielded a MAE of 0.043.
 
 ## Future Work
 
