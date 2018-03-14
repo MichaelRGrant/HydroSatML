@@ -8,7 +8,9 @@ Soil moisture is an important characteristic in agriculture as it has been shown
 
 Our objective was to determine whether machine learning models can be used to accurately estimate soil moisture with high-resolution multispectral satellite imagery, physical characteristics and environmental factors.
 
-The project and results are summarized in the poster below.
+This project was completed for the University of Washington Data Science Masters Capstone in March 2018.
+
+**Project Summary**
 
 ![Alt text](/presentations/images/MSDS_Capstone_Poster_FINAL.png "Final Poster")
 
