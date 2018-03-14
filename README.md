@@ -20,19 +20,19 @@ This project was completed for the University of Washington Data Science Masters
 
 ```
 HydroSatML/
-	|- code/
-		|- 1_cleaning_and_merging
-		|- 2_utilities
-		|- 3_modeling
-		|- 4_supplementals
-	|- data/
-		|- best_params
-		|- figures
-		|- models
-	|- presentations/
-		|- images
-	|- LICENSE
-	|- README.md
+    |- 1_data/
+        |- best_params
+        |- figures
+        |- models
+    |- 2_code/
+        |- 1_cleaning_and_merging
+        |- 2_utilities
+        |- 3_modeling
+        |- 4_supplementals
+    |- presentations/
+        |- images
+    |- LICENSE
+    |- README.md
 ```
 
 ### Data
