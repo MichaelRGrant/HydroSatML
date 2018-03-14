@@ -18,40 +18,20 @@ Our Capstone Poster Presentation can be found here:
 
 ### Overview
 
-TODO: Update directory structure below...
-
 ```
 HydroSatML/
-  |- data/
-  |- scripts/
-       |- TODO: UDATE LIST
-       |- 
-       |- 
-       |- NDRE_exploration.R
-       |- SMR Extraction and Comparison.R
-       |- hydrosatML_result_plots.R
-       |- kriging.R
-       |- lagged_df_function.R
-       |- merge_data.R
-       |- merge_data_script.R
-       |- plot_all_NDRE.R
-       |- soilM_precision_maps.R
-       |- subset_ndre_byShape.R
-       |- time_series_data.R
-  |- LICENSE     
-  |- README.md
+	|- data/
+	|- presentations/
+		|- images
+	|- code/
+		|- 1_cleaning_and_merging
+		|- 2_utilities
+		|- 3_modeling
+		|- 4_supplementals
+	|- .gitignore
+	|- LICENSE
+	|- README.md
 ```
-
-### Code
-
-#### Data Cleaning and Merging
-
-Words...
-Link to cleaning and merging code...
-
-#### Modeling
-
-#### Utilities
 
 ### Data
 
@@ -65,16 +45,36 @@ Features:
 Response:
  * Soil Moisture collected from sensors
 
+Unfortunately our data is not publicly available, and therefore it is not included within this repository.
+
+### Code
+
+TODO: Beef up these sections
+
+#### Data Cleaning and Merging
+
+Words...
+Link to cleaning and merging code...
+
+#### Utilities
+
+#### Modeling
 
 
 
 ## Results / Conclusions
 
-TODO
+TODO: beef up this section...
 
 ## Future Work
 
-TODO
+### Physical Model and Interpolation
+
+A physical (hydrological) model could be utilized to estimate soil moisture beyond the 12 sensor locations. While less precise, a kriging or splining method could be used to spatially interpolate soil moisture across the  elds where no vegetation or soil moisture readings are present.
+
+### Beyond the Palouse
+
+It is unclear how our models would perform for  elds beyond the Palouse. To develop a more robust model, future work would bene t from new training data encompassing a wider range of physical characteristics.
 
 ## Acknowledgements
 
@@ -82,12 +82,12 @@ Our project was sponsored by the Washington State University's Department of Cro
 
 A thanks to our sponsors:
 
-- Matt Yourek - PhD student, Washington State University, Department of Civil & Environmental Engineering
-- Dr. David Brown - Professor, Washington State University, Department of Crop and Soil Sciences
-- Dr. Erin Brooks - Professor, University of Idaho, Department of Soil and Water Systems  
+- **Matt Yourek** - PhD student, Washington State University, Department of Civil & Environmental Engineering
+- **Dr. David Brown** - Professor, Washington State University, Department of Crop and Soil Sciences
+- **Dr. Erin Brooks** - Professor, University of Idaho, Department of Soil and Water Systems  
 
 And our project advisor:
-- Dr. Megan Hazen - University of Washington, Data Science Capstone
+- **Dr. Megan Hazen** - University of Washington, Data Science Capstone
 
 
 
